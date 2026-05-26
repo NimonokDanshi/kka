@@ -1,0 +1,42 @@
+[
+  {
+    "resourceType": "Observation",
+    "id": "mock-1",
+    "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "8302-2", "display": "Body Height"}]},
+    "subject": {"reference": "Patient/1"},
+    "valueQuantity": {"value": 170.5, "unit": "cm"}
+  },
+  {
+    "resourceType": "Observation",
+    "id": "mock-2",
+    "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "29463-7", "display": "Body Weight"}]},
+    "subject": {"reference": "Patient/1"},
+    "valueQuantity": {"value": 65.0, "unit": "kg"}
+  },
+  {
+    "resourceType": "Observation",
+    "id": "mock-3",
+    "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "8480-6", "display": "Systolic blood pressure"}]},
+    "subject": {"reference": "Patient/1"},
+    "valueQuantity": {"value": 120, "unit": "mmHg"}
+  },
+  {
+    "resourceType": "Observation",
+    "id": "mock-4",
+    "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "8462-4", "display": "Diastolic blood pressure"}]},
+    "subject": {"reference": "Patient/1"},
+    "valueQuantity": {"value": 80, "unit": "mmHg"}
+  },
+  {
+    "resourceType": "Observation",
+    "id": "mock-5",
+    "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "8867-4", "display": "Heart rate"}]},
+    "subject": {"reference": "Patient/1"},
+    "valueQuantity": {"value": 72, "unit": "/min"}
+  }
+]
