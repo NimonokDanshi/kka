@@ -245,7 +245,6 @@ export function LabResultTable() {
                   mode="single"
                   selected={selectedDate}
                   onSelect={handleCalendarSelect}
-                  initialFocus
                   className="bg-white dark:bg-slate-950 rounded-md border-0"
                 />
               </PopoverContent>
@@ -323,7 +322,7 @@ export function LabResultTable() {
                     </TableRow>
                   )
                 })}
-              </tbody>
+              </TableBody>
             </Table>
           </div>
         ) : (
