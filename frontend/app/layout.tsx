@@ -39,8 +39,8 @@ export default function RootLayout({
       lang="ja"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="h-full overflow-hidden bg-background">
-        <SidebarProvider>
+      <body className="overflow-hidden bg-background">
+        <SidebarProvider className="h-screen w-screen overflow-hidden">
           <AppSidebar />
           <SidebarInset className="flex flex-col h-full overflow-hidden">
             {/* ヘッダー領域 */}
