@@ -49,12 +49,10 @@ src/
 │   └── domain/           # 医療ドメイン特有のUIパーツ
 │       └── lab/          # 検査値バッジ、基準値インジケータ等
 ├── features/             # 【重要】ビジネスロジックごとのカプセル化
-│   ├── patient-search/   # 患者検索機能
-│   └── lab-results/      # 検体検査結果表示機能
-│       ├── components/   # この機能専用の複合コンポーネント
-│       ├── hooks/        # useLabResults 等の TanStack Query
-│       ├── services/     # FHIRリソースの取得・変換ロジック
-│       └── types/        # アプリ内での検査データの型定義
+│   └── kentai-kekka-view/# 検体検査結果表示機能
+│       ├── components/   # この機能専用のUIコンポーネント（KentaiKekkaView, LabResultTable等）
+│       ├── hooks/        # データフェッチや状態管理ロジック（useKentaiKekka）
+│       └── types/        # この機能で用いる型定義（Observation等）
 ├── lib/                  # 共通ユーティリティ
 │   ├── fhir/             # FHIRクライアント設定、共通マッパー
 │   └── utils.ts          # shadcn/ui 用の clsx ユーティリティ

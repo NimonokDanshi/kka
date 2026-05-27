@@ -20,7 +20,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
-import { Observation } from "./lab-result-table"
+import { Observation } from "../types"
 
 interface ChartLineDotsProps {
   observations: Observation[]
@@ -158,12 +158,12 @@ export function ChartLineDots({ observations }: ChartLineDotsProps) {
       </CardContent>
       <CardFooter className="flex-col items-start gap-1 text-sm border-t border-slate-100/50 dark:border-slate-800/50 pt-4">
         {hasPanic ? (
-          <div className="flex gap-1.5 leading-none font-medium text-red-600 dark:text-red-400 items-center">
+          <div className="flex gap-1.5 leading-none font-medium text-red-650 dark:text-red-400 items-center">
             <AlertCircle className="h-4 w-4 shrink-0" />
             <span>基準値を逸脱した心拍数が記録されています</span>
           </div>
         ) : (
-          <div className="flex gap-1.5 leading-none font-medium text-slate-600 dark:text-slate-400 items-center">
+          <div className="flex gap-1.5 leading-none font-medium text-slate-650 dark:text-slate-400 items-center">
             <TrendingUp className="h-4 w-4 text-teal-650 shrink-0" />
             <span>最新の測定値は基準値範囲内です</span>
           </div>

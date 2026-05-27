@@ -28,9 +28,9 @@ export function AppSidebar() {
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
                   {/* lucideのアイコンではなく、next/linkのLinkを使う */}
-                  <Link href="/">
+                  <Link href="/KentaiKekkaView">
                     <Home className="size-4" /> 
-                    <span>ダッシュボード</span>
+                    <span>検査結果一覧</span>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
