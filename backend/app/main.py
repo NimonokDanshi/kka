@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.services.fhir import get_observations
+from app.services.fhir import get_observations, get_patients
 
 app = FastAPI(title="Med-Visualize Backend")
 
@@ -25,6 +25,11 @@ app.add_middleware(
 def health():
     return {"status": "ok"}
 
+@app.get("/patients")
+def patients():
+    return get_patients()
+
 @app.get("/observations")
-def observations():
-    return get_observations()
+def observations(patient_id: str = None):
+    return get_observations(patient_id)
+

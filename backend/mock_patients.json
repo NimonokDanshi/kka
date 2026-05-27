@@ -1,0 +1,50 @@
+[
+  {
+    "resourceType": "Patient",
+    "id": "1",
+    "name": [
+      {
+        "use": "official",
+        "text": "山田 太郎"
+      },
+      {
+        "use": "usual",
+        "text": "ヤマダ タロウ"
+      }
+    ],
+    "gender": "male",
+    "birthDate": "1985-04-12"
+  },
+  {
+    "resourceType": "Patient",
+    "id": "2",
+    "name": [
+      {
+        "use": "official",
+        "text": "佐藤 花子"
+      },
+      {
+        "use": "usual",
+        "text": "サトウ ハナコ"
+      }
+    ],
+    "gender": "female",
+    "birthDate": "1990-08-25"
+  },
+  {
+    "resourceType": "Patient",
+    "id": "3",
+    "name": [
+      {
+        "use": "official",
+        "text": "鈴木 一郎"
+      },
+      {
+        "use": "usual",
+        "text": "スズキ イチロウ"
+      }
+    ],
+    "gender": "male",
+    "birthDate": "1960-11-03"
+  }
+]

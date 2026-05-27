@@ -59,7 +59,67 @@
   },
   {
     "resourceType": "Observation",
-    "id": "obs-2-1",
+    "id": "obs-1-7",
+    "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "6690-2", "display": "White blood cells"}]},
+    "subject": {"reference": "Patient/1"},
+    "valueQuantity": {"value": 8.2, "unit": "x10³/µL"},
+    "effectiveDateTime": "2026-05-27T09:00:00Z",
+    "referenceRange": [{"low": {"value": 3.3}, "high": {"value": 8.6}}]
+  },
+  {
+    "resourceType": "Observation",
+    "id": "obs-1-8",
+    "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "718-7", "display": "Hemoglobin"}]},
+    "subject": {"reference": "Patient/1"},
+    "valueQuantity": {"value": 13.8, "unit": "g/dL"},
+    "effectiveDateTime": "2026-05-27T09:00:00Z",
+    "referenceRange": [{"low": {"value": 13.7}, "high": {"value": 16.8}}]
+  },
+  {
+    "resourceType": "Observation",
+    "id": "obs-1-9",
+    "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "777-3", "display": "Platelets"}]},
+    "subject": {"reference": "Patient/1"},
+    "valueQuantity": {"value": 165, "unit": "x10³/µL"},
+    "effectiveDateTime": "2026-05-27T09:00:00Z",
+    "referenceRange": [{"low": {"value": 158}, "high": {"value": 348}}]
+  },
+  {
+    "resourceType": "Observation",
+    "id": "obs-1-10",
+    "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "1920-8", "display": "Aspartate aminotransferase"}]},
+    "subject": {"reference": "Patient/1"},
+    "valueQuantity": {"value": 38, "unit": "U/L"},
+    "effectiveDateTime": "2026-05-27T09:00:00Z",
+    "referenceRange": [{"low": {"value": 10}, "high": {"value": 40}}]
+  },
+  {
+    "resourceType": "Observation",
+    "id": "obs-1-11",
+    "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "1742-6", "display": "Alanine aminotransferase"}]},
+    "subject": {"reference": "Patient/1"},
+    "valueQuantity": {"value": 36, "unit": "U/L"},
+    "effectiveDateTime": "2026-05-27T09:00:00Z",
+    "referenceRange": [{"low": {"value": 10}, "high": {"value": 40}}]
+  },
+  {
+    "resourceType": "Observation",
+    "id": "obs-1-12",
+    "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "1988-5", "display": "C reactive protein"}]},
+    "subject": {"reference": "Patient/1"},
+    "valueQuantity": {"value": 0.4, "unit": "mg/dL"},
+    "effectiveDateTime": "2026-05-27T09:00:00Z",
+    "referenceRange": [{"low": {"value": 0.0}, "high": {"value": 0.3}}]
+  },
+  {
+    "resourceType": "Observation",
+    "id": "obs-1-13",
     "status": "final",
     "code": {"coding": [{"system": "http://loinc.org", "code": "29463-7", "display": "Body Weight"}]},
     "subject": {"reference": "Patient/1"},
@@ -68,7 +128,7 @@
   },
   {
     "resourceType": "Observation",
-    "id": "obs-2-2",
+    "id": "obs-1-14",
     "status": "final",
     "code": {"coding": [{"system": "http://loinc.org", "code": "8867-4", "display": "Heart rate"}]},
     "subject": {"reference": "Patient/1"},
@@ -78,7 +138,7 @@
   },
   {
     "resourceType": "Observation",
-    "id": "obs-2-3",
+    "id": "obs-1-15",
     "status": "final",
     "code": {"coding": [{"system": "http://loinc.org", "code": "8480-6", "display": "Systolic blood pressure"}]},
     "subject": {"reference": "Patient/1"},
@@ -88,7 +148,7 @@
   },
   {
     "resourceType": "Observation",
-    "id": "obs-2-4",
+    "id": "obs-1-16",
     "status": "final",
     "code": {"coding": [{"system": "http://loinc.org", "code": "8462-4", "display": "Diastolic blood pressure"}]},
     "subject": {"reference": "Patient/1"},
@@ -98,41 +158,498 @@
   },
   {
     "resourceType": "Observation",
-    "id": "obs-3-1",
+    "id": "obs-1-17",
+    "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "6690-2", "display": "White blood cells"}]},
+    "subject": {"reference": "Patient/1"},
+    "valueQuantity": {"value": 9.8, "unit": "x10³/µL"},
+    "effectiveDateTime": "2026-05-26T09:00:00Z",
+    "referenceRange": [{"low": {"value": 3.3}, "high": {"value": 8.6}}]
+  },
+  {
+    "resourceType": "Observation",
+    "id": "obs-1-18",
+    "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "718-7", "display": "Hemoglobin"}]},
+    "subject": {"reference": "Patient/1"},
+    "valueQuantity": {"value": 13.2, "unit": "g/dL"},
+    "effectiveDateTime": "2026-05-26T09:00:00Z",
+    "referenceRange": [{"low": {"value": 13.7}, "high": {"value": 16.8}}]
+  },
+  {
+    "resourceType": "Observation",
+    "id": "obs-1-19",
+    "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "777-3", "display": "Platelets"}]},
+    "subject": {"reference": "Patient/1"},
+    "valueQuantity": {"value": 140, "unit": "x10³/µL"},
+    "effectiveDateTime": "2026-05-26T09:00:00Z",
+    "referenceRange": [{"low": {"value": 158}, "high": {"value": 348}}]
+  },
+  {
+    "resourceType": "Observation",
+    "id": "obs-1-20",
+    "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "1920-8", "display": "Aspartate aminotransferase"}]},
+    "subject": {"reference": "Patient/1"},
+    "valueQuantity": {"value": 45, "unit": "U/L"},
+    "effectiveDateTime": "2026-05-26T09:00:00Z",
+    "referenceRange": [{"low": {"value": 10}, "high": {"value": 40}}]
+  },
+  {
+    "resourceType": "Observation",
+    "id": "obs-1-21",
+    "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "1742-6", "display": "Alanine aminotransferase"}]},
+    "subject": {"reference": "Patient/1"},
+    "valueQuantity": {"value": 35, "unit": "U/L"},
+    "effectiveDateTime": "2026-05-26T09:00:00Z",
+    "referenceRange": [{"low": {"value": 10}, "high": {"value": 40}}]
+  },
+  {
+    "resourceType": "Observation",
+    "id": "obs-1-22",
+    "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "1988-5", "display": "C reactive protein"}]},
+    "subject": {"reference": "Patient/1"},
+    "valueQuantity": {"value": 1.2, "unit": "mg/dL"},
+    "effectiveDateTime": "2026-05-26T09:00:00Z",
+    "referenceRange": [{"low": {"value": 0.0}, "high": {"value": 0.3}}]
+  },
+
+  {
+    "resourceType": "Observation",
+    "id": "obs-2-1",
+    "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "8302-2", "display": "Body Height"}]},
+    "subject": {"reference": "Patient/2"},
+    "valueQuantity": {"value": 158.0, "unit": "cm"},
+    "effectiveDateTime": "2026-05-27T09:00:00Z"
+  },
+  {
+    "resourceType": "Observation",
+    "id": "obs-2-2",
     "status": "final",
     "code": {"coding": [{"system": "http://loinc.org", "code": "29463-7", "display": "Body Weight"}]},
-    "subject": {"reference": "Patient/1"},
-    "valueQuantity": {"value": 67.5, "unit": "kg"},
-    "effectiveDateTime": "2026-05-25T08:30:00Z"
+    "subject": {"reference": "Patient/2"},
+    "valueQuantity": {"value": 52.0, "unit": "kg"},
+    "effectiveDateTime": "2026-05-27T09:00:00Z"
+  },
+  {
+    "resourceType": "Observation",
+    "id": "obs-2-3",
+    "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "8867-4", "display": "Heart rate"}]},
+    "subject": {"reference": "Patient/2"},
+    "valueQuantity": {"value": 70, "unit": "/min"},
+    "effectiveDateTime": "2026-05-27T09:10:00Z",
+    "referenceRange": [{"low": {"value": 60, "unit": "/min"}, "high": {"value": 100, "unit": "/min"}}]
+  },
+  {
+    "resourceType": "Observation",
+    "id": "obs-2-4",
+    "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "8480-6", "display": "Systolic blood pressure"}]},
+    "subject": {"reference": "Patient/2"},
+    "valueQuantity": {"value": 112, "unit": "mmHg"},
+    "effectiveDateTime": "2026-05-27T09:15:00Z",
+    "referenceRange": [{"low": {"value": 90, "unit": "mmHg"}, "high": {"value": 129, "unit": "mmHg"}}]
+  },
+  {
+    "resourceType": "Observation",
+    "id": "obs-2-5",
+    "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "8462-4", "display": "Diastolic blood pressure"}]},
+    "subject": {"reference": "Patient/2"},
+    "valueQuantity": {"value": 72, "unit": "mmHg"},
+    "effectiveDateTime": "2026-05-27T09:15:00Z",
+    "referenceRange": [{"low": {"value": 60, "unit": "mmHg"}, "high": {"value": 84, "unit": "mmHg"}}]
+  },
+  {
+    "resourceType": "Observation",
+    "id": "obs-2-6",
+    "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "15074-8", "display": "Glucose"}]},
+    "subject": {"reference": "Patient/2"},
+    "valueQuantity": {"value": 92, "unit": "mg/dL"},
+    "effectiveDateTime": "2026-05-27T09:30:00Z",
+    "referenceRange": [{"low": {"value": 70, "unit": "mg/dL"}, "high": {"value": 109, "unit": "mg/dL"}}]
+  },
+  {
+    "resourceType": "Observation",
+    "id": "obs-2-7",
+    "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "6690-2", "display": "White blood cells"}]},
+    "subject": {"reference": "Patient/2"},
+    "valueQuantity": {"value": 5.2, "unit": "x10³/µL"},
+    "effectiveDateTime": "2026-05-27T09:00:00Z",
+    "referenceRange": [{"low": {"value": 3.3}, "high": {"value": 8.6}}]
+  },
+  {
+    "resourceType": "Observation",
+    "id": "obs-2-8",
+    "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "718-7", "display": "Hemoglobin"}]},
+    "subject": {"reference": "Patient/2"},
+    "valueQuantity": {"value": 12.9, "unit": "g/dL"},
+    "effectiveDateTime": "2026-05-27T09:00:00Z",
+    "referenceRange": [{"low": {"value": 11.5}, "high": {"value": 15.0}}]
+  },
+  {
+    "resourceType": "Observation",
+    "id": "obs-2-9",
+    "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "777-3", "display": "Platelets"}]},
+    "subject": {"reference": "Patient/2"},
+    "valueQuantity": {"value": 225, "unit": "x10³/µL"},
+    "effectiveDateTime": "2026-05-27T09:00:00Z",
+    "referenceRange": [{"low": {"value": 158}, "high": {"value": 348}}]
+  },
+  {
+    "resourceType": "Observation",
+    "id": "obs-2-10",
+    "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "1920-8", "display": "Aspartate aminotransferase"}]},
+    "subject": {"reference": "Patient/2"},
+    "valueQuantity": {"value": 18, "unit": "U/L"},
+    "effectiveDateTime": "2026-05-27T09:00:00Z",
+    "referenceRange": [{"low": {"value": 10}, "high": {"value": 40}}]
+  },
+  {
+    "resourceType": "Observation",
+    "id": "obs-2-11",
+    "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "1742-6", "display": "Alanine aminotransferase"}]},
+    "subject": {"reference": "Patient/2"},
+    "valueQuantity": {"value": 14, "unit": "U/L"},
+    "effectiveDateTime": "2026-05-27T09:00:00Z",
+    "referenceRange": [{"low": {"value": 10}, "high": {"value": 40}}]
+  },
+  {
+    "resourceType": "Observation",
+    "id": "obs-2-12",
+    "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "1988-5", "display": "C reactive protein"}]},
+    "subject": {"reference": "Patient/2"},
+    "valueQuantity": {"value": 0.04, "unit": "mg/dL"},
+    "effectiveDateTime": "2026-05-27T09:00:00Z",
+    "referenceRange": [{"low": {"value": 0.0}, "high": {"value": 0.3}}]
+  },
+  {
+    "resourceType": "Observation",
+    "id": "obs-2-13",
+    "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "29463-7", "display": "Body Weight"}]},
+    "subject": {"reference": "Patient/2"},
+    "valueQuantity": {"value": 51.8, "unit": "kg"},
+    "effectiveDateTime": "2026-05-26T08:45:00Z"
+  },
+  {
+    "resourceType": "Observation",
+    "id": "obs-2-14",
+    "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "8867-4", "display": "Heart rate"}]},
+    "subject": {"reference": "Patient/2"},
+    "valueQuantity": {"value": 72, "unit": "/min"},
+    "effectiveDateTime": "2026-05-26T09:00:00Z",
+    "referenceRange": [{"low": {"value": 60, "unit": "/min"}, "high": {"value": 100, "unit": "/min"}}]
+  },
+  {
+    "resourceType": "Observation",
+    "id": "obs-2-15",
+    "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "8480-6", "display": "Systolic blood pressure"}]},
+    "subject": {"reference": "Patient/2"},
+    "valueQuantity": {"value": 110, "unit": "mmHg"},
+    "effectiveDateTime": "2026-05-26T09:05:00Z",
+    "referenceRange": [{"low": {"value": 90, "unit": "mmHg"}, "high": {"value": 129, "unit": "mmHg"}}]
+  },
+  {
+    "resourceType": "Observation",
+    "id": "obs-2-16",
+    "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "8462-4", "display": "Diastolic blood pressure"}]},
+    "subject": {"reference": "Patient/2"},
+    "valueQuantity": {"value": 70, "unit": "mmHg"},
+    "effectiveDateTime": "2026-05-26T09:05:00Z",
+    "referenceRange": [{"low": {"value": 60, "unit": "mmHg"}, "high": {"value": 84, "unit": "mmHg"}}]
+  },
+  {
+    "resourceType": "Observation",
+    "id": "obs-2-17",
+    "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "6690-2", "display": "White blood cells"}]},
+    "subject": {"reference": "Patient/2"},
+    "valueQuantity": {"value": 5.5, "unit": "x10³/µL"},
+    "effectiveDateTime": "2026-05-26T09:00:00Z",
+    "referenceRange": [{"low": {"value": 3.3}, "high": {"value": 8.6}}]
+  },
+  {
+    "resourceType": "Observation",
+    "id": "obs-2-18",
+    "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "718-7", "display": "Hemoglobin"}]},
+    "subject": {"reference": "Patient/2"},
+    "valueQuantity": {"value": 12.8, "unit": "g/dL"},
+    "effectiveDateTime": "2026-05-26T09:00:00Z",
+    "referenceRange": [{"low": {"value": 11.5}, "high": {"value": 15.0}}]
+  },
+  {
+    "resourceType": "Observation",
+    "id": "obs-2-19",
+    "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "777-3", "display": "Platelets"}]},
+    "subject": {"reference": "Patient/2"},
+    "valueQuantity": {"value": 210, "unit": "x10³/µL"},
+    "effectiveDateTime": "2026-05-26T09:00:00Z",
+    "referenceRange": [{"low": {"value": 158}, "high": {"value": 348}}]
+  },
+  {
+    "resourceType": "Observation",
+    "id": "obs-2-20",
+    "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "1920-8", "display": "Aspartate aminotransferase"}]},
+    "subject": {"reference": "Patient/2"},
+    "valueQuantity": {"value": 20, "unit": "U/L"},
+    "effectiveDateTime": "2026-05-26T09:00:00Z",
+    "referenceRange": [{"low": {"value": 10}, "high": {"value": 40}}]
+  },
+  {
+    "resourceType": "Observation",
+    "id": "obs-2-21",
+    "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "1742-6", "display": "Alanine aminotransferase"}]},
+    "subject": {"reference": "Patient/2"},
+    "valueQuantity": {"value": 15, "unit": "U/L"},
+    "effectiveDateTime": "2026-05-26T09:00:00Z",
+    "referenceRange": [{"low": {"value": 10}, "high": {"value": 40}}]
+  },
+  {
+    "resourceType": "Observation",
+    "id": "obs-2-22",
+    "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "1988-5", "display": "C reactive protein"}]},
+    "subject": {"reference": "Patient/2"},
+    "valueQuantity": {"value": 0.05, "unit": "mg/dL"},
+    "effectiveDateTime": "2026-05-26T09:00:00Z",
+    "referenceRange": [{"low": {"value": 0.0}, "high": {"value": 0.3}}]
+  },
+
+  {
+    "resourceType": "Observation",
+    "id": "obs-3-1",
+    "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "8302-2", "display": "Body Height"}]},
+    "subject": {"reference": "Patient/3"},
+    "valueQuantity": {"value": 165.2, "unit": "cm"},
+    "effectiveDateTime": "2026-05-27T09:00:00Z"
   },
   {
     "resourceType": "Observation",
     "id": "obs-3-2",
     "status": "final",
-    "code": {"coding": [{"system": "http://loinc.org", "code": "8867-4", "display": "Heart rate"}]},
-    "subject": {"reference": "Patient/1"},
-    "valueQuantity": {"value": 68, "unit": "/min"},
-    "effectiveDateTime": "2026-05-25T08:40:00Z",
-    "referenceRange": [{"low": {"value": 60, "unit": "/min"}, "high": {"value": 100, "unit": "/min"}}]
+    "code": {"coding": [{"system": "http://loinc.org", "code": "29463-7", "display": "Body Weight"}]},
+    "subject": {"reference": "Patient/3"},
+    "valueQuantity": {"value": 75.2, "unit": "kg"},
+    "effectiveDateTime": "2026-05-27T09:00:00Z"
   },
   {
     "resourceType": "Observation",
     "id": "obs-3-3",
     "status": "final",
-    "code": {"coding": [{"system": "http://loinc.org", "code": "8480-6", "display": "Systolic blood pressure"}]},
-    "subject": {"reference": "Patient/1"},
-    "valueQuantity": {"value": 128, "unit": "mmHg"},
-    "effectiveDateTime": "2026-05-25T08:45:00Z",
-    "referenceRange": [{"low": {"value": 90, "unit": "mmHg"}, "high": {"value": 129, "unit": "mmHg"}}]
+    "code": {"coding": [{"system": "http://loinc.org", "code": "8867-4", "display": "Heart rate"}]},
+    "subject": {"reference": "Patient/3"},
+    "valueQuantity": {"value": 80, "unit": "/min"},
+    "effectiveDateTime": "2026-05-27T09:10:00Z",
+    "referenceRange": [{"low": {"value": 60, "unit": "/min"}, "high": {"value": 100, "unit": "/min"}}]
   },
   {
     "resourceType": "Observation",
     "id": "obs-3-4",
     "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "8480-6", "display": "Systolic blood pressure"}]},
+    "subject": {"reference": "Patient/3"},
+    "valueQuantity": {"value": 145, "unit": "mmHg"},
+    "effectiveDateTime": "2026-05-27T09:15:00Z",
+    "referenceRange": [{"low": {"value": 90, "unit": "mmHg"}, "high": {"value": 129, "unit": "mmHg"}}]
+  },
+  {
+    "resourceType": "Observation",
+    "id": "obs-3-5",
+    "status": "final",
     "code": {"coding": [{"system": "http://loinc.org", "code": "8462-4", "display": "Diastolic blood pressure"}]},
-    "subject": {"reference": "Patient/1"},
-    "valueQuantity": {"value": 82, "unit": "mmHg"},
-    "effectiveDateTime": "2026-05-25T08:45:00Z",
+    "subject": {"reference": "Patient/3"},
+    "valueQuantity": {"value": 95, "unit": "mmHg"},
+    "effectiveDateTime": "2026-05-27T09:15:00Z",
     "referenceRange": [{"low": {"value": 60, "unit": "mmHg"}, "high": {"value": 84, "unit": "mmHg"}}]
+  },
+  {
+    "resourceType": "Observation",
+    "id": "obs-3-6",
+    "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "15074-8", "display": "Glucose"}]},
+    "subject": {"reference": "Patient/3"},
+    "valueQuantity": {"value": 140, "unit": "mg/dL"},
+    "effectiveDateTime": "2026-05-27T09:30:00Z",
+    "referenceRange": [{"low": {"value": 70, "unit": "mg/dL"}, "high": {"value": 109, "unit": "mg/dL"}}]
+  },
+  {
+    "resourceType": "Observation",
+    "id": "obs-3-7",
+    "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "6690-2", "display": "White blood cells"}]},
+    "subject": {"reference": "Patient/3"},
+    "valueQuantity": {"value": 11.2, "unit": "x10³/µL"},
+    "effectiveDateTime": "2026-05-27T09:00:00Z",
+    "referenceRange": [{"low": {"value": 3.3}, "high": {"value": 8.6}}]
+  },
+  {
+    "resourceType": "Observation",
+    "id": "obs-3-8",
+    "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "718-7", "display": "Hemoglobin"}]},
+    "subject": {"reference": "Patient/3"},
+    "valueQuantity": {"value": 14.5, "unit": "g/dL"},
+    "effectiveDateTime": "2026-05-27T09:00:00Z",
+    "referenceRange": [{"low": {"value": 13.7}, "high": {"value": 16.8}}]
+  },
+  {
+    "resourceType": "Observation",
+    "id": "obs-3-9",
+    "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "777-3", "display": "Platelets"}]},
+    "subject": {"reference": "Patient/3"},
+    "valueQuantity": {"value": 290, "unit": "x10³/µL"},
+    "effectiveDateTime": "2026-05-27T09:00:00Z",
+    "referenceRange": [{"low": {"value": 158}, "high": {"value": 348}}]
+  },
+  {
+    "resourceType": "Observation",
+    "id": "obs-3-10",
+    "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "1920-8", "display": "Aspartate aminotransferase"}]},
+    "subject": {"reference": "Patient/3"},
+    "valueQuantity": {"value": 55, "unit": "U/L"},
+    "effectiveDateTime": "2026-05-27T09:00:00Z",
+    "referenceRange": [{"low": {"value": 10}, "high": {"value": 40}}]
+  },
+  {
+    "resourceType": "Observation",
+    "id": "obs-3-11",
+    "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "1742-6", "display": "Alanine aminotransferase"}]},
+    "subject": {"reference": "Patient/3"},
+    "valueQuantity": {"value": 48, "unit": "U/L"},
+    "effectiveDateTime": "2026-05-27T09:00:00Z",
+    "referenceRange": [{"low": {"value": 10}, "high": {"value": 40}}]
+  },
+  {
+    "resourceType": "Observation",
+    "id": "obs-3-12",
+    "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "1988-5", "display": "C reactive protein"}]},
+    "subject": {"reference": "Patient/3"},
+    "valueQuantity": {"value": 2.8, "unit": "mg/dL"},
+    "effectiveDateTime": "2026-05-27T09:00:00Z",
+    "referenceRange": [{"low": {"value": 0.0}, "high": {"value": 0.3}}]
+  },
+  {
+    "resourceType": "Observation",
+    "id": "obs-3-13",
+    "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "29463-7", "display": "Body Weight"}]},
+    "subject": {"reference": "Patient/3"},
+    "valueQuantity": {"value": 74.8, "unit": "kg"},
+    "effectiveDateTime": "2026-05-26T08:45:00Z"
+  },
+  {
+    "resourceType": "Observation",
+    "id": "obs-3-14",
+    "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "8867-4", "display": "Heart rate"}]},
+    "subject": {"reference": "Patient/3"},
+    "valueQuantity": {"value": 82, "unit": "/min"},
+    "effectiveDateTime": "2026-05-26T09:00:00Z",
+    "referenceRange": [{"low": {"value": 60, "unit": "/min"}, "high": {"value": 100, "unit": "/min"}}]
+  },
+  {
+    "resourceType": "Observation",
+    "id": "obs-3-15",
+    "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "8480-6", "display": "Systolic blood pressure"}]},
+    "subject": {"reference": "Patient/3"},
+    "valueQuantity": {"value": 148, "unit": "mmHg"},
+    "effectiveDateTime": "2026-05-26T09:05:00Z",
+    "referenceRange": [{"low": {"value": 90, "unit": "mmHg"}, "high": {"value": 129, "unit": "mmHg"}}]
+  },
+  {
+    "resourceType": "Observation",
+    "id": "obs-3-16",
+    "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "8462-4", "display": "Diastolic blood pressure"}]},
+    "subject": {"reference": "Patient/3"},
+    "valueQuantity": {"value": 96, "unit": "mmHg"},
+    "effectiveDateTime": "2026-05-26T09:05:00Z",
+    "referenceRange": [{"low": {"value": 60, "unit": "mmHg"}, "high": {"value": 84, "unit": "mmHg"}}]
+  },
+  {
+    "resourceType": "Observation",
+    "id": "obs-3-17",
+    "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "6690-2", "display": "White blood cells"}]},
+    "subject": {"reference": "Patient/3"},
+    "valueQuantity": {"value": 12.1, "unit": "x10³/µL"},
+    "effectiveDateTime": "2026-05-26T09:00:00Z",
+    "referenceRange": [{"low": {"value": 3.3}, "high": {"value": 8.6}}]
+  },
+  {
+    "resourceType": "Observation",
+    "id": "obs-3-18",
+    "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "718-7", "display": "Hemoglobin"}]},
+    "subject": {"reference": "Patient/3"},
+    "valueQuantity": {"value": 14.6, "unit": "g/dL"},
+    "effectiveDateTime": "2026-05-26T09:00:00Z",
+    "referenceRange": [{"low": {"value": 13.7}, "high": {"value": 16.8}}]
+  },
+  {
+    "resourceType": "Observation",
+    "id": "obs-3-19",
+    "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "777-3", "display": "Platelets"}]},
+    "subject": {"reference": "Patient/3"},
+    "valueQuantity": {"value": 285, "unit": "x10³/µL"},
+    "effectiveDateTime": "2026-05-26T09:00:00Z",
+    "referenceRange": [{"low": {"value": 158}, "high": {"value": 348}}]
+  },
+  {
+    "resourceType": "Observation",
+    "id": "obs-3-20",
+    "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "1920-8", "display": "Aspartate aminotransferase"}]},
+    "subject": {"reference": "Patient/3"},
+    "valueQuantity": {"value": 58, "unit": "U/L"},
+    "effectiveDateTime": "2026-05-26T09:00:00Z",
+    "referenceRange": [{"low": {"value": 10}, "high": {"value": 40}}]
+  },
+  {
+    "resourceType": "Observation",
+    "id": "obs-3-21",
+    "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "1742-6", "display": "Alanine aminotransferase"}]},
+    "subject": {"reference": "Patient/3"},
+    "valueQuantity": {"value": 52, "unit": "U/L"},
+    "effectiveDateTime": "2026-05-26T09:00:00Z",
+    "referenceRange": [{"low": {"value": 10}, "high": {"value": 40}}]
+  },
+  {
+    "resourceType": "Observation",
+    "id": "obs-3-22",
+    "status": "final",
+    "code": {"coding": [{"system": "http://loinc.org", "code": "1988-5", "display": "C reactive protein"}]},
+    "subject": {"reference": "Patient/3"},
+    "valueQuantity": {"value": 3.2, "unit": "mg/dL"},
+    "effectiveDateTime": "2026-05-26T09:00:00Z",
+    "referenceRange": [{"low": {"value": 0.0}, "high": {"value": 0.3}}]
   }
 ]

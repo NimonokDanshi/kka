@@ -28,3 +28,19 @@ export interface Observation {
   effectiveDateTime: string // ISO 8601 string
   referenceRange?: ReferenceRange[]
 }
+
+export interface PatientName {
+  use?: string
+  text: string
+  family?: string
+  given?: string[]
+}
+
+export interface Patient {
+  resourceType: "Patient"
+  id: string
+  name: PatientName[]
+  gender: "male" | "female" | "other" | "unknown"
+  birthDate: string // YYYY-MM-DD
+}
+
