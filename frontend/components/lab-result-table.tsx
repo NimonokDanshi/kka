@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import { CalendarIcon, ChevronLeft, ChevronRight, AlertCircle, RefreshCw } from "lucide-react"
 import { cn } from "@/lib/utils"
 import {
@@ -42,7 +42,12 @@ interface ValueQuantity {
   unit: string
 }
 
-interface Observation {
+export interface ReferenceRange {
+  low?: { value: number; unit?: string }
+  high?: { value: number; unit?: string }
+}
+
+export interface Observation {
   resourceType: "Observation"
   id: string
   status: string
@@ -50,10 +55,11 @@ interface Observation {
   subject: { reference: string }
   valueQuantity: ValueQuantity
   effectiveDateTime: string // ISO 8601 string
+  referenceRange?: ReferenceRange[]
 }
 
 // バックエンド未起動時のためのフォールバック用モックデータ
-const FALLBACK_OBSERVATIONS: Observation[] = [
+export const FALLBACK_OBSERVATIONS: Observation[] = [
   {
     resourceType: "Observation",
     id: "mock-1",
@@ -61,7 +67,7 @@ const FALLBACK_OBSERVATIONS: Observation[] = [
     code: { coding: [{ system: "http://loinc.org", code: "8302-2", display: "Body Height" }] },
     subject: { reference: "Patient/1" },
     valueQuantity: { value: 170.5, unit: "cm" },
-    effectiveDateTime: "2026-05-26T09:00:00Z"
+    effectiveDateTime: "2026-05-27T09:00:00Z"
   },
   {
     resourceType: "Observation",
@@ -69,8 +75,8 @@ const FALLBACK_OBSERVATIONS: Observation[] = [
     status: "final",
     code: { coding: [{ system: "http://loinc.org", code: "29463-7", display: "Body Weight" }] },
     subject: { reference: "Patient/1" },
-    valueQuantity: { value: 65.0, unit: "kg" },
-    effectiveDateTime: "2026-05-26T09:15:00Z"
+    valueQuantity: { value: 68.2, unit: "kg" },
+    effectiveDateTime: "2026-05-27T09:00:00Z"
   },
   {
     resourceType: "Observation",
@@ -78,77 +84,122 @@ const FALLBACK_OBSERVATIONS: Observation[] = [
     status: "final",
     code: { coding: [{ system: "http://loinc.org", code: "8867-4", display: "Heart rate" }] },
     subject: { reference: "Patient/1" },
-    valueQuantity: { value: 72, unit: "/min" },
-    effectiveDateTime: "2026-05-26T09:30:00Z"
+    valueQuantity: { value: 75, unit: "/min" },
+    effectiveDateTime: "2026-05-27T09:10:00Z",
+    referenceRange: [{ low: { value: 60, unit: "/min" }, high: { value: 100, unit: "/min" } }]
   },
   {
     resourceType: "Observation",
     id: "mock-4",
     status: "final",
-    code: { coding: [{ system: "http://loinc.org", code: "29463-7", display: "Body Weight" }] },
+    code: { coding: [{ system: "http://loinc.org", code: "8480-6", display: "Systolic blood pressure" }] },
     subject: { reference: "Patient/1" },
-    valueQuantity: { value: 65.5, unit: "kg" },
-    effectiveDateTime: "2026-05-25T10:00:00Z"
+    valueQuantity: { value: 135, unit: "mmHg" },
+    effectiveDateTime: "2026-05-27T09:15:00Z",
+    referenceRange: [{ low: { value: 90, unit: "mmHg" }, high: { value: 129, unit: "mmHg" } }]
   },
   {
     resourceType: "Observation",
     id: "mock-5",
     status: "final",
-    code: { coding: [{ system: "http://loinc.org", code: "8480-6", display: "Systolic blood pressure" }] },
+    code: { coding: [{ system: "http://loinc.org", code: "8462-4", display: "Diastolic blood pressure" }] },
     subject: { reference: "Patient/1" },
-    valueQuantity: { value: 120, unit: "mmHg" },
-    effectiveDateTime: "2026-05-25T10:15:00Z"
+    valueQuantity: { value: 85, unit: "mmHg" },
+    effectiveDateTime: "2026-05-27T09:15:00Z",
+    referenceRange: [{ low: { value: 60, unit: "mmHg" }, high: { value: 84, unit: "mmHg" } }]
   },
   {
     resourceType: "Observation",
     id: "mock-6",
     status: "final",
-    code: { coding: [{ system: "http://loinc.org", code: "8462-4", display: "Diastolic blood pressure" }] },
+    code: { coding: [{ system: "http://loinc.org", code: "15074-8", display: "Glucose" }] },
     subject: { reference: "Patient/1" },
-    valueQuantity: { value: 80, unit: "mmHg" },
-    effectiveDateTime: "2026-05-25T10:15:00Z"
+    valueQuantity: { value: 125, unit: "mg/dL" },
+    effectiveDateTime: "2026-05-27T09:30:00Z",
+    referenceRange: [{ low: { value: 70, unit: "mg/dL" }, high: { value: 109, unit: "mg/dL" } }]
   },
   {
     resourceType: "Observation",
     id: "mock-7",
     status: "final",
+    code: { coding: [{ system: "http://loinc.org", code: "29463-7", display: "Body Weight" }] },
+    subject: { reference: "Patient/1" },
+    valueQuantity: { value: 67.8, unit: "kg" },
+    effectiveDateTime: "2026-05-26T08:45:00Z"
+  },
+  {
+    resourceType: "Observation",
+    id: "mock-8",
+    status: "final",
     code: { coding: [{ system: "http://loinc.org", code: "8867-4", display: "Heart rate" }] },
     subject: { reference: "Patient/1" },
-    valueQuantity: { value: 68, unit: "/min" },
-    effectiveDateTime: "2026-05-25T10:30:00Z"
+    valueQuantity: { value: 105, unit: "/min" },
+    effectiveDateTime: "2026-05-26T09:00:00Z",
+    referenceRange: [{ low: { value: 60, unit: "/min" }, high: { value: 100, unit: "/min" } }]
+  },
+  {
+    resourceType: "Observation",
+    id: "mock-9",
+    status: "final",
+    code: { coding: [{ system: "http://loinc.org", code: "8480-6", display: "Systolic blood pressure" }] },
+    subject: { reference: "Patient/1" },
+    valueQuantity: { value: 142, unit: "mmHg" },
+    effectiveDateTime: "2026-05-26T09:05:00Z",
+    referenceRange: [{ low: { value: 90, unit: "mmHg" }, high: { value: 129, unit: "mmHg" } }]
+  },
+  {
+    resourceType: "Observation",
+    id: "mock-10",
+    status: "final",
+    code: { coding: [{ system: "http://loinc.org", code: "8462-4", display: "Diastolic blood pressure" }] },
+    subject: { reference: "Patient/1" },
+    valueQuantity: { value: 92, unit: "mmHg" },
+    effectiveDateTime: "2026-05-26T09:05:00Z",
+    referenceRange: [{ low: { value: 60, unit: "mmHg" }, high: { value: 84, unit: "mmHg" } }]
   }
 ]
 
-export function LabResultTable() {
-  const [selectedDate, setSelectedDate] = useState<Date>(new Date("2026-05-26"))
-  const [observations, setObservations] = useState<Observation[]>([])
-  const [isLoading, setIsLoading] = useState<boolean>(true)
-  const [isUsingFallback, setIsUsingFallback] = useState<boolean>(false)
-  const [isCalendarOpen, setIsCalendarOpen] = useState<boolean>(false)
+const checkIsPanic = (value: number, range?: ReferenceRange[]) => {
+  if (!range || range.length === 0) return false
+  const r = range[0]
+  if (r.low?.value !== undefined && value < r.low.value) return true
+  if (r.high?.value !== undefined && value > r.high.value) return true
+  return false
+}
 
-  // データフェッチ
-  const fetchObservations = async () => {
-    setIsLoading(true)
-    try {
-      const response = await fetch("http://localhost:8000/observations")
-      if (!response.ok) {
-        throw new Error("Failed to fetch from API")
-      }
-      const data = await response.json()
-      setObservations(data)
-      setIsUsingFallback(false)
-    } catch (error) {
-      console.warn("Backend API not reachable, using fallback mockup data.", error)
-      setObservations(FALLBACK_OBSERVATIONS)
-      setIsUsingFallback(true)
-    } finally {
-      setIsLoading(false)
-    }
+const getReferenceRangeString = (range?: ReferenceRange[]) => {
+  if (!range || range.length === 0) return "-"
+  const r = range[0]
+  if (r.low?.value !== undefined && r.high?.value !== undefined) {
+    return `${r.low.value} - ${r.high.value}`
   }
+  if (r.low?.value !== undefined) {
+    return `>= ${r.low.value}`
+  }
+  if (r.high?.value !== undefined) {
+    return `<= ${r.high.value}`
+  }
+  return "-"
+}
 
-  useEffect(() => {
-    fetchObservations()
-  }, [])
+export interface LabResultTableProps {
+  selectedDate: Date
+  setSelectedDate: React.Dispatch<React.SetStateAction<Date>>
+  observations: Observation[]
+  isLoading: boolean
+  isUsingFallback: boolean
+  onRefresh: () => void
+}
+
+export function LabResultTable({
+  selectedDate,
+  setSelectedDate,
+  observations,
+  isLoading,
+  isUsingFallback,
+  onRefresh,
+}: LabResultTableProps) {
+  const [isCalendarOpen, setIsCalendarOpen] = useState<boolean>(false)
 
   // 日付オブジェクトを比較用および表示用の YYYY-MM-DD 文字列にパース
   const formatSelectedDate = (date: Date) => {
@@ -165,7 +216,7 @@ export function LabResultTable() {
       const month = String(date.getMonth() + 1).padStart(2, '0')
       const day = String(date.getDate()).padStart(2, '0')
       return `${year}-${month}-${day}`
-    } catch (e) {
+    } catch {
       return ""
     }
   }
@@ -264,7 +315,7 @@ export function LabResultTable() {
             <Button
               variant="ghost"
               size="icon"
-              onClick={fetchObservations}
+              onClick={onRefresh}
               disabled={isLoading}
               title="データを更新"
               className="h-9 w-9 text-slate-400 hover:text-teal-500 dark:text-slate-500 dark:hover:text-teal-400"
@@ -299,6 +350,12 @@ export function LabResultTable() {
                   <TableHead className="py-3.5 px-4 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider text-right h-auto">
                     検査結果値
                   </TableHead>
+                  <TableHead className="py-3.5 px-4 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider text-center h-auto">
+                    基準値範囲
+                  </TableHead>
+                  <TableHead className="py-3.5 px-4 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider text-center h-auto">
+                    判定
+                  </TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody className="divide-y divide-slate-100 dark:divide-slate-800/50">
@@ -306,18 +363,52 @@ export function LabResultTable() {
                   const label = obs.code.coding[0]?.display || "不明な項目"
                   const value = obs.valueQuantity.value
                   const unit = obs.valueQuantity.unit
+                  const isPanic = checkIsPanic(value, obs.referenceRange)
+                  const refRangeStr = getReferenceRangeString(obs.referenceRange)
                   
                   return (
                     <TableRow 
                       key={obs.id}
-                      className="group hover:bg-slate-50/50 dark:hover:bg-slate-950/40 border-b border-slate-100 dark:border-slate-800/50 transition-colors"
+                      className={cn(
+                        "group hover:bg-slate-50/50 dark:hover:bg-slate-950/40 border-b border-slate-100 dark:border-slate-800/50 transition-colors",
+                        isPanic && "bg-red-50/30 dark:bg-red-950/10 hover:bg-red-50/50 dark:hover:bg-red-950/20"
+                      )}
                     >
                       <TableCell className="py-3.5 px-4 text-sm font-medium text-slate-700 dark:text-slate-200 flex items-center gap-2">
-                        <div className="h-1.5 w-1.5 rounded-full bg-slate-300 dark:bg-slate-600 group-hover:bg-teal-500 transition-colors" />
+                        <div className={cn(
+                          "h-1.5 w-1.5 rounded-full bg-slate-300 dark:bg-slate-600 group-hover:bg-teal-500 transition-colors",
+                          isPanic && "bg-red-400 dark:bg-red-500 group-hover:bg-red-500"
+                        )} />
                         {label}
                       </TableCell>
-                      <TableCell className="py-3.5 px-4 text-sm font-semibold text-slate-900 dark:text-slate-100 text-right tabular-nums">
-                        {value} <span className="text-xs font-normal text-slate-500 dark:text-slate-400 ml-1">{unit}</span>
+                      <TableCell className={cn(
+                        "py-3.5 px-4 text-sm font-semibold text-right tabular-nums",
+                        isPanic ? "text-red-600 dark:text-red-400" : "text-slate-900 dark:text-slate-100"
+                      )}>
+                        <div className="flex items-center justify-end gap-1.5">
+                          {isPanic && <AlertCircle className="h-4 w-4 text-red-500 animate-pulse shrink-0" />}
+                          <span>{value} <span className="text-xs font-normal text-slate-500 dark:text-slate-400 ml-1">{unit}</span></span>
+                        </div>
+                      </TableCell>
+                      <TableCell className="py-3.5 px-4 text-sm text-slate-500 dark:text-slate-400 text-center tabular-nums">
+                        {refRangeStr}
+                      </TableCell>
+                      <TableCell className="py-3.5 px-4 text-sm text-center">
+                        {obs.referenceRange ? (
+                          isPanic ? (
+                            <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-red-100 text-red-800 dark:bg-red-900/50 dark:text-red-300">
+                              異常
+                            </span>
+                          ) : (
+                            <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-green-100 text-green-800 dark:bg-green-900/50 dark:text-green-300">
+                              正常
+                            </span>
+                          )
+                        ) : (
+                          <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold bg-slate-150 text-slate-700 dark:bg-slate-800 dark:text-slate-300">
+                            -
+                          </span>
+                        )}
                       </TableCell>
                     </TableRow>
                   )

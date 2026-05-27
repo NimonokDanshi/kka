@@ -15,7 +15,8 @@ export function UserProfile() {
   const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
-    setMounted(true)
+    const timer = setTimeout(() => setMounted(true), 0)
+    return () => clearTimeout(timer)
   }, [])
 
   // サーバーサイドでは中身をレンダリングせず、ハイドレーションエラーを防ぐ
