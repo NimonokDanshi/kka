@@ -1,9 +1,11 @@
 "use client"
 
-import React from "react"
+import React, { useState } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { cn } from "@/lib/utils"
 import { LabResultTable } from "./lab-result-table"
 import { ChartLineDots } from "./chart-line-dots"
+import { LabResultTimelineTable } from "./lab-result-timeline-table"
 import { useKentaiKekka } from "../hooks/use-kentai-kekka"
 
 export function KentaiKekkaView() {
@@ -14,7 +16,11 @@ export function KentaiKekkaView() {
     isLoading,
     isUsingFallback,
     handleRefresh,
+    selectedCodes,
+    setSelectedCodes,
   } = useKentaiKekka()
+
+  const [activeTab, setActiveTab] = useState<"graph" | "table">("graph")
 
   return (
     <div className="space-y-6">
@@ -58,11 +64,9 @@ export function KentaiKekkaView() {
       </div>
 
       {/* グリッドレイアウトでグラフとテーブルを並列配置 */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="h-full">
-          <ChartLineDots observations={observations} />
-        </div>
-        <div className="h-full">
+      <div className="grid grid-cols-1 xl:grid-cols-12 gap-6 items-start">
+        {/* 左側：検査結果一覧（日付切り替えとチェックボックス） */}
+        <div className="xl:col-span-5 h-full">
           <LabResultTable
             selectedDate={selectedDate}
             setSelectedDate={setSelectedDate}
@@ -70,7 +74,46 @@ export function KentaiKekkaView() {
             isLoading={isLoading}
             isUsingFallback={isUsingFallback}
             onRefresh={handleRefresh}
+            selectedCodes={selectedCodes}
+            onSelectedCodesChange={setSelectedCodes}
           />
+        </div>
+
+        {/* 右側：時系列データ（グラフ / 表 のタブ切り替え） */}
+        <div className="xl:col-span-7 space-y-6">
+          {/* タブ切り替えボタン */}
+          <div className="flex justify-between items-center bg-slate-50 dark:bg-slate-950/40 p-1.5 rounded-lg border border-slate-100 dark:border-slate-800 max-w-fit">
+            <button
+              onClick={() => setActiveTab("graph")}
+              className={cn(
+                "px-4 py-2 text-sm font-semibold rounded-md transition-all flex items-center gap-2 cursor-pointer",
+                activeTab === "graph"
+                  ? "bg-white dark:bg-slate-900 text-teal-600 dark:text-teal-400 shadow-sm border border-slate-200/50 dark:border-slate-800"
+                  : "text-slate-500 hover:text-slate-800 dark:hover:text-slate-200"
+              )}
+            >
+              時系列グラフ
+            </button>
+            <button
+              onClick={() => setActiveTab("table")}
+              className={cn(
+                "px-4 py-2 text-sm font-semibold rounded-md transition-all flex items-center gap-2 cursor-pointer",
+                activeTab === "table"
+                  ? "bg-white dark:bg-slate-900 text-teal-600 dark:text-teal-400 shadow-sm border border-slate-200/50 dark:border-slate-800"
+                  : "text-slate-500 hover:text-slate-800 dark:hover:text-slate-200"
+              )}
+            >
+              時系列表
+            </button>
+          </div>
+
+          <div>
+            {activeTab === "graph" ? (
+              <ChartLineDots observations={observations} selectedCodes={selectedCodes} />
+            ) : (
+              <LabResultTimelineTable observations={observations} selectedCodes={selectedCodes} />
+            )}
+          </div>
         </div>
       </div>
     </div>

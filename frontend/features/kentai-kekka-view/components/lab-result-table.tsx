@@ -26,6 +26,7 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover"
 import { Observation, ReferenceRange } from "../types"
+import { getTestJapaneseName } from "../hooks/use-kentai-kekka"
 
 
 const checkIsPanic = (value: number, range?: ReferenceRange[]) => {
@@ -58,6 +59,8 @@ export interface LabResultTableProps {
   isLoading: boolean
   isUsingFallback: boolean
   onRefresh: () => void
+  selectedCodes: string[]
+  onSelectedCodesChange: (codes: string[]) => void
 }
 
 export function LabResultTable({
@@ -67,6 +70,8 @@ export function LabResultTable({
   isLoading,
   isUsingFallback,
   onRefresh,
+  selectedCodes,
+  onSelectedCodesChange,
 }: LabResultTableProps) {
   const [isCalendarOpen, setIsCalendarOpen] = useState<boolean>(false)
 
@@ -96,6 +101,33 @@ export function LabResultTable({
     if (!obs.effectiveDateTime) return false
     return getLocalDateString(obs.effectiveDateTime) === selectedDateStr
   })
+
+  // 表示されている項目のコードリスト
+  const displayedCodes = filteredObservations
+    .map(obs => obs.code.coding[0]?.code)
+    .filter(Boolean) as string[]
+
+  const isAllSelectedOnDate = displayedCodes.length > 0 && displayedCodes.every(code => selectedCodes.includes(code))
+  const isSomeSelectedOnDate = displayedCodes.length > 0 && displayedCodes.some(code => selectedCodes.includes(code)) && !isAllSelectedOnDate
+
+  const handleToggleAllOnDate = () => {
+    if (isAllSelectedOnDate) {
+      // 表示中の項目をすべて選択解除
+      onSelectedCodesChange(selectedCodes.filter(code => !displayedCodes.includes(code)))
+    } else {
+      // 表示中の項目をすべて選択
+      const newSelected = Array.from(new Set([...selectedCodes, ...displayedCodes]))
+      onSelectedCodesChange(newSelected)
+    }
+  }
+
+  const handleToggleCode = (code: string) => {
+    if (selectedCodes.includes(code)) {
+      onSelectedCodesChange(selectedCodes.filter(c => c !== code))
+    } else {
+      onSelectedCodesChange([...selectedCodes, code])
+    }
+  }
 
   // 日付の増減処理
   const handlePrevDay = () => {
@@ -131,7 +163,7 @@ export function LabResultTable({
               検査結果一覧
             </CardTitle>
             <CardDescription className="text-slate-500 dark:text-slate-400">
-              日付ごとの詳細な測定データ
+              日付ごとの詳細な測定データ（チェックした項目が右側のグラフと表に連動します）
             </CardDescription>
           </div>
           
@@ -145,7 +177,7 @@ export function LabResultTable({
             >
               <ChevronLeft className="h-4 w-4" />
             </Button>
-
+ 
             {/* Popover & Calendarによる日付選択 */}
             <Popover open={isCalendarOpen} onOpenChange={setIsCalendarOpen}>
               <PopoverTrigger asChild>
@@ -156,7 +188,7 @@ export function LabResultTable({
                     !selectedDate && "text-muted-foreground"
                   )}
                 >
-                  <CalendarIcon className="mr-2 h-4 w-4 text-teal-600 dark:text-teal-400" />
+                  <CalendarIcon className="mr-2 h-4 w-4 text-teal-650 dark:text-teal-400" />
                   {selectedDate ? formatSelectedDate(selectedDate) : <span>日付を選択</span>}
                 </Button>
               </PopoverTrigger>
@@ -169,7 +201,7 @@ export function LabResultTable({
                 />
               </PopoverContent>
             </Popover>
-
+ 
             {/* 翌日ボタン */}
             <Button
               variant="outline"
@@ -179,7 +211,7 @@ export function LabResultTable({
             >
               <ChevronRight className="h-4 w-4" />
             </Button>
-
+ 
             {/* リフレッシュボタン */}
             <Button
               variant="ghost"
@@ -193,7 +225,7 @@ export function LabResultTable({
             </Button>
           </div>
         </div>
-
+ 
         {isUsingFallback && !isLoading && (
           <div className="mt-2 text-xs flex items-center gap-1.5 text-amber-600 dark:text-amber-400 bg-amber-50 dark:bg-amber-950/30 px-2.5 py-1.5 rounded-md border border-amber-200/50 dark:border-amber-900/30">
             <AlertCircle className="h-3.5 w-3.5" />
@@ -201,7 +233,7 @@ export function LabResultTable({
           </div>
         )}
       </CardHeader>
-
+ 
       <CardContent>
         {isLoading ? (
           <div className="flex flex-col items-center justify-center py-10 space-y-3">
@@ -213,6 +245,17 @@ export function LabResultTable({
             <Table>
               <TableHeader className="bg-slate-50/70 dark:bg-slate-900/50">
                 <TableRow className="hover:bg-transparent border-b border-slate-100 dark:border-slate-800">
+                  <TableHead className="py-3.5 px-4 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider h-auto w-12 text-center">
+                    <input
+                      type="checkbox"
+                      ref={el => {
+                        if (el) el.indeterminate = isSomeSelectedOnDate
+                      }}
+                      checked={isAllSelectedOnDate}
+                      onChange={handleToggleAllOnDate}
+                      className="h-4 w-4 rounded border-slate-300 text-teal-600 focus:ring-teal-500 dark:border-slate-700 dark:bg-slate-900 cursor-pointer"
+                    />
+                  </TableHead>
                   <TableHead className="py-3.5 px-4 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider h-auto">
                     検査結果項目名
                   </TableHead>
@@ -229,7 +272,10 @@ export function LabResultTable({
               </TableHeader>
               <TableBody className="divide-y divide-slate-100 dark:divide-slate-800/50">
                 {filteredObservations.map((obs) => {
-                  const label = obs.code.coding[0]?.display || "不明な項目"
+                  const rawCode = obs.code.coding[0]?.code || ""
+                  const rawLabel = obs.code.coding[0]?.display || "不明な項目"
+                  const label = getTestJapaneseName(rawCode, rawLabel)
+                  
                   const value = obs.valueQuantity.value
                   const unit = obs.valueQuantity.unit
                   const isPanic = checkIsPanic(value, obs.referenceRange)
@@ -238,11 +284,20 @@ export function LabResultTable({
                   return (
                     <TableRow 
                       key={obs.id}
+                      onClick={() => handleToggleCode(rawCode)}
                       className={cn(
-                        "group hover:bg-slate-50/50 dark:hover:bg-slate-950/40 border-b border-slate-100 dark:border-slate-800/50 transition-colors",
+                        "group hover:bg-slate-50/50 dark:hover:bg-slate-950/40 border-b border-slate-100 dark:border-slate-800/50 transition-colors cursor-pointer",
                         isPanic && "bg-red-50/30 dark:bg-red-950/10 hover:bg-red-50/50 dark:hover:bg-red-950/20"
                       )}
                     >
+                      <TableCell className="py-3.5 px-4 text-center w-12" onClick={e => e.stopPropagation()}>
+                        <input
+                          type="checkbox"
+                          checked={selectedCodes.includes(rawCode)}
+                          onChange={() => handleToggleCode(rawCode)}
+                          className="h-4 w-4 rounded border-slate-300 text-teal-600 focus:ring-teal-500 dark:border-slate-700 dark:bg-slate-900 cursor-pointer"
+                        />
+                      </TableCell>
                       <TableCell className="py-3.5 px-4 text-sm font-medium text-slate-700 dark:text-slate-200 flex items-center gap-2">
                         <div className={cn(
                           "h-1.5 w-1.5 rounded-full bg-slate-300 dark:bg-slate-600 group-hover:bg-teal-500 transition-colors",
@@ -252,7 +307,7 @@ export function LabResultTable({
                       </TableCell>
                       <TableCell className={cn(
                         "py-3.5 px-4 text-sm font-semibold text-right tabular-nums",
-                        isPanic ? "text-red-600 dark:text-red-400" : "text-slate-900 dark:text-slate-100"
+                        isPanic ? "text-red-650 dark:text-red-400" : "text-slate-900 dark:text-slate-100"
                       )}>
                         <div className="flex items-center justify-end gap-1.5">
                           {isPanic && <AlertCircle className="h-4 w-4 text-red-500 animate-pulse shrink-0" />}
